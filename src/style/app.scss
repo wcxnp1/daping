@@ -1,0 +1,24 @@
+.overviewul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .overviewli {
+    display: flex;
+    flex-direction: column;
+
+    .overviewtitle {
+      font-size: 0.1406rem;
+    }
+    .overviewi {
+      display: inline-block;
+      width: 0.0521rem;
+      height: 0.0521rem;
+      background-color: blue;
+      border-radius: 0.2083rem;
+    }
+    .overviewname{
+         font-size: .0833rem;
+         color: #4c9bfd;
+    }
+  }
+}
