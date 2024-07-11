@@ -115,8 +115,6 @@ const headtabs = (index) => {
 const headLIst = computed(() => {
    return tabsetData[tabsTab.value].center.head
 })
-
-
 const headdinit = () => {
    let chartDom = document.getElementById('pie');
    let myChart = echarts.init(chartDom);
@@ -219,6 +217,9 @@ const headdinit = () => {
 onMounted(() => {
    headdinit()
    headbar()
+   headline()
+   headradar()
+   headgauge()
 })
 // 第二列的
 const datatabds = reactive([
@@ -286,7 +287,7 @@ setInterval(() => {
    if (datatabsetrou.value >= 3) {
       return (datatabsetrou.value = 0)
    }
-   fometitset(datatabsetrou.value+1)
+   fometitset(datatabsetrou.value + 1)
 
 }, 1000)
 
@@ -452,6 +453,286 @@ const headbar = () => {
 }
 
 // 第三列的
+
+const salestitletabs = ref([
+   {
+      name: '年'
+   },
+   {
+      name: '季'
+   },
+   {
+      name: '月'
+   },
+   {
+      name: '周'
+   }
+])
+const setlesdata = ref(
+   [
+      {
+         conter: {
+            name: [24, 40, 351, 134, 90, 230, 235, 230, 134, 230, 235, 134],
+            value: [24, 40, 351, 134, 90, 230, 235, 230, 134, 230, 235, 134]
+         }
+      },
+      {
+         conter: {
+            name: [30, 50, 351, 134, 34, 230, 235, 230, 134, 230, 235, 134],
+            value: [24, 40, 351, 12, 34, 230, 235, 230, 120, 230, 235, 120]
+         }
+      },
+      {
+         conter: {
+            name: [12, 40, 351, 12, 90, 230, 235, 230, 120, 230, 235, 120],
+            value: [12, 40, 121, 12, 6, 230, 212, 230, 120, 120, 212, 120]
+         }
+      },
+      {
+         conter: {
+            name: [12, 40, 121, 12, 6, 120, 212, 120, 120, 230, 210, 120],
+            value: [24, 40, 101, 134, 6, 230, 210, 230, 120, 230, 210, 120]
+         }
+      }
+
+
+   ]
+)
+const salestitletab = ref(0)
+const setdata = ref([])
+const Xdata = ref([])
+const Ydata = ref([])
+function headtabssales (index) {
+   clearInterval(remoteccolor)
+   salestitletab.value = index
+   setdata.value = setlesdata.value[index].conter
+   Xdata.value = setdata.value.name
+   Ydata.value = setdata.value.value
+   headline()
+
+}
+setTimeout
+   (() => {
+      headtabssales(0)
+   })
+function remoteccolor () {
+   return setInterval
+      (() => {
+         salestitletab.value++
+         if (salestitletab.value > 3) {
+            salestitletab.value = 0
+         }
+         headtabssales(salestitletab.value)
+      }, 4000)
+}
+remoteccolor()
+const headline = () => {
+   const myChart = echarts.init(document.getElementById('line'));
+   const option = {
+      tooltip: {
+         trigger: "axis"
+      },
+      color: ['#00f2f1', '#ed3f35'],
+      legend: {
+         data: ["预期销售额", "实际销售额"],
+         textStyle: {
+            color: '#4c9bfd' // 图例⽂字颜⾊
+         },
+         right: '10%' // 距离右边10%
+      },
+      grid: {
+         top: '20%',
+         left: '3%',
+         right: '4%',
+         bottom: '3%',
+         show: true,// 显示边框
+         borderColor: '#012f4a',// 边框颜⾊
+         containLabel: true // 包含刻度⽂字在内
+      },
+      xAxis: {
+         type: 'category',
+         data: ['1⽉', '2⽉', '3⽉', '4⽉', '5⽉', '6⽉', '7⽉', '8⽉', '9⽉', '10⽉', '11⽉', '12⽉'],
+         axisTick: {
+            show: false // 去除刻度线
+         },
+         axisLabel: {
+            color: '#4c9bfd' // ⽂本颜⾊
+         },
+         axisLine: {
+            show: false // 去除轴线
+         },
+         boundaryGap: false // 去除轴内间距
+      },
+      yAxis: {
+
+         type: 'value',
+         axisTick: {
+            show: false // 去除刻度
+         },
+         axisLabel: {
+            color: '#4c9bfd' // ⽂字颜⾊
+         },
+         splitLine: {
+            lineStyle: {
+               color: '#012f4a' // 分割线颜⾊
+            }
+         }
+
+      },
+      series: [
+         {
+            name: '预期销售额',
+            data: Xdata.value,
+            type: 'line',
+            // 折线修饰为圆滑
+            smooth: true,
+         }, {
+            name: '实际销售额',
+            data: Ydata.value,
+            type: 'line',
+            smooth: true,
+         }
+      ]
+   };
+   // 3. 把配置和数据给实例对象
+   myChart.setOption(option);
+
+}
+const headradar = () => {
+   const myChart = echarts.init(document.getElementById('radar'));
+   // 2.指定配置
+   var option = {
+      tooltip: {
+         show: true,
+         // 控制提示框组件的显示位置
+         position: ["60%", "10%"]
+      },
+      radar: {
+         indicator: [
+            { name: "机场", max: 100 },
+            { name: "商场", max: 100 },
+            { name: "⽕⻋站", max: 100 },
+            { name: "汽⻋站", max: 100 },
+            { name: "地铁", max: 100 }
+         ],
+         // 修改雷达图的⼤⼩
+         radius: "65%",
+         shape: "circle",
+         // 分割的圆圈个数
+         splitNumber: 4,
+         name: {
+            // 修饰雷达图⽂字的颜⾊
+            textStyle: {
+               color: "#4c9bfd"
+            }
+         },
+         // 分割的圆圈线条的样式
+         splitLine: {
+            lineStyle: {
+               color: "rgba(255,255,255, 0.5)"
+            }
+         },
+         splitArea: {
+            show: false
+         },
+         // 坐标轴的线修改为⽩⾊半透明
+         axisLine: {
+            lineStyle: {
+               color: "rgba(255, 255, 255, 0.5)"
+            }
+         }
+      },
+      series: [
+         {
+            name: "北京",
+            type: "radar",
+            // 填充区域的线条颜⾊
+            lineStyle: {
+               normal: {
+                  color: "#fff",
+                  width: 1,
+                  opacity: 0.5
+               }
+            },
+
+            data: [[90, 19, 56, 11, 34]],
+            // 设置图形标记 （拐点）
+            symbol: "circle",
+            // 这个是设置⼩圆点⼤⼩
+            symbolSize: 5,
+            // 设置⼩圆点颜⾊
+            itemStyle: {
+               color: "#fff"
+            },
+            // 让⼩圆点显示数据
+            label: {
+               show: true,
+               fontSize: 10
+            },
+            // 修饰我们区域填充的背景颜⾊
+            areaStyle: {
+               color: "rgba(238, 197, 102, 0.6)"
+            }
+         }
+      ]
+   }
+   // 3.把配置和数据给对象
+   myChart.setOption(option);
+   // 当我们浏览器缩放的时候，图表也等⽐例缩放
+   window.addEventListener("resize", function () {
+      // 让我们的图表调⽤ resize这个⽅法
+      myChart.resize();
+   });
+}
+const headgauge = () => {
+   var myChart = echarts.init(document.getElementById('gauge'));
+   var option = {
+      series: [
+         {
+            type: 'pie',
+            // 放⼤图形
+            radius: ['130%', '150%'],
+            // 移动下位置 套住50%⽂字
+            center: ['48%', '80%'],
+            label: {
+               normal: {
+                  show: false
+               }
+            },
+            // 起始⻆度，⽀持范围[0, 360]
+            startAngle: 180,
+            hoverOffset: 0,
+
+
+            data: [
+               {
+                  value: 10,
+                  itemStyle: {
+                     // 颜⾊渐变#00c9e0->#005fc1
+                     color: new echarts.graphic.LinearGradient(
+                        // (x1,y2) 点到点 (x2,y2) 之间进⾏渐变
+                        0,
+                        0,
+                        0,
+                        1,
+                        [
+                           { offset: 0, color: "#00c9e0" }, // 0 起始颜⾊
+                           { offset: 1, color: "#005fc1" } // 1 结束颜⾊
+                        ]
+                     )
+                  }
+               },
+               { value: 100, itemStyle: { color: '#12274d' } }, // 颜⾊#12274d
+
+            ]
+         }
+      ]
+   }
+   // 3. 把数据和配置给实例对象
+   myChart.setOption(option);
+}
+
+
 // 数值的逗号
 
 </script>
@@ -492,13 +773,9 @@ const headbar = () => {
                            <span>{{ item.time }}</span>
                            <span>{{ item.name }}</span>
                            <span>{{ item.sex }}</span>
-                           <!-- <span class="rowset"></span> -->
                            <div class="rowset"></div>
-
                         </div>
-
                      </Vue3SeamlessScroll>
-
                   </div>
                </div>
             </div>
@@ -567,23 +844,154 @@ const headbar = () => {
                      <span class="tittt"></span>
                      <span class="routername">{{ item.value }}</span>
                   </div>
+
                </div>
 
             </div>
          </div>
          <!-- 销售-->
-         <div class="sales panel">销售</div>
+         <div class="sales panel">
+            <div class="salesdata">
+               <h3>销售额统计</h3>
+               <span class="salestitle" v-for="(item, index) in salestitletabs" :key="index"
+                  @click="headtabssales(index)" :class="{ saleeactive: salestitletab == index }">{{
+                     item.name }}</span>
+            </div>
+            <div class="chartselad">
+               <!-- <div class="label">单位:万</div> -->
+               <div class="line" id="line">
+               </div>
+            </div>
+         </div>
          <!-- 渠道与销售进度-->
          <div class="wrap">
             <div class="channel panel">
-
+               <h3>渠道分布</h3>
+               <div class="radar" id="radar"></div>
             </div>
             <div class="quarter panel">
-
+               <h3>一季度销售进度</h3>
+               <div class="quarterbie" id="gauge"></div>
+               <div class="potingauge">50%</div>
+               <div class="quarterbox">
+                  <div class="boxetser">
+                     <span>1,321</span>
+                     <div class="boxserter">
+                        <span class="quartercolor"></span>
+                        <span class="quartertitle">销售额(万元)</span>
+                     </div>
+                  </div>
+                  <div class="boxetser">
+                     <span>1,321</span>
+                     <div class="boxserter">
+                        <span class="quartercolor"></span>
+                        <span class="quartertitle">销售额(万元)</span>
+                     </div>
+                  </div>
+               </div>
             </div>
          </div>
          <!-- 排行-->
-         <div class="top panel">排行</div>
+         <div class="top panel">
+            <div class="lefttop">
+               <h3>全国热榜</h3>
+               <ul class="lefttopul">
+                  <li>
+                     <img src="@/assets/images/one.webp" alt="" class="headimg">
+                     <span>可爱多</span>
+                  </li>
+                  <li>
+                     <img src="@/assets/images/one.webp" alt="" class="headimg">
+                     <span>可爱多</span>
+                  </li>
+                  <li>
+                     <img src="@/assets/images/one.webp" alt="" class="headimg">
+                     <span>可爱多</span>
+                  </li>
+               </ul>
+            </div>
+            <div class="righttop">
+               <h3>各省热销</h3>
+               <div class="righttopul">
+                  <ul class="sup">
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+
+                  </ul>
+                  <ul class="sup">
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+                     <li>
+                        <span>北京</span>
+                        <div>
+                           <span>21.023</span>
+                           <div class="sopspan"></div>
+                        </div>
+                     </li>
+
+                  </ul>
+               </div>
+            </div>
+         </div>
       </div>
    </div>
 </template>
@@ -613,7 +1021,7 @@ const headbar = () => {
    .map {
       height: 3.0104rem;
       margin-bottom: .1042rem;
-      // background: rgba(0,0,0,0.5);
+
       background-color: red;
    }
 

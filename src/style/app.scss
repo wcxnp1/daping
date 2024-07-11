@@ -263,30 +263,59 @@
       // flex-direction: column;
       justify-content: space-between;
       padding: 0 10px;
-      .orderdatabox{
-         width: 50%;
+      .orderdatabox {
+        width: 50%;
       }
-      .ordertitle{
-        margin-top: .026rem;
-          display: flex;
-          align-items: center;
-          .tittt{
-               width: .0521rem;
-               height: .0521rem;
-               border-radius: 100%;
-               background-color: #68d8fe;
-               margin-right: .0365rem;
-          }
-          .routername{
-             font-size: .0833rem;
-             color: #61a8ff;
-          }
+      .ordertitle {
+        margin-top: 0.026rem;
+        display: flex;
+        align-items: center;
+        .tittt {
+          width: 0.0521rem;
+          height: 0.0521rem;
+          border-radius: 100%;
+          background-color: #68d8fe;
+          margin-right: 0.0365rem;
+        }
+        .routername {
+          font-size: 0.0833rem;
+          color: #61a8ff;
+        }
       }
     }
   }
 
   .sales {
     height: 1.2917rem;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    .salesdata {
+      display: flex;
+      align-items: center;
+      h3 {
+        padding-right: 0.0781rem;
+        border-right: 0.0052rem solid #68d8fe;
+      }
+      .salestitle {
+        margin-left: 0.1302rem;
+      }
+      .saleeactive {
+        padding: 5px 5px;
+        background-color: #4c9bfd;
+      }
+    }
+    .chartselad {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      // background-color: red;
+
+      .line {
+        flex: 1;
+        // background-color: red;
+      }
+    }
   }
 
   .wrap {
@@ -296,15 +325,114 @@
       flex: 1;
       height: 1.2083rem;
       margin-right: 0.1042rem;
+      padding: 0.1042rem 0.1042rem;
+      display: flex;
+      flex-direction: column;
     }
-
+    .radar {
+      flex: 1;
+    }
     .quarter {
       flex: 1;
       height: 1.2083rem;
+      padding: 0.1042rem 0.1042rem;
+      display: flex;
+      flex-direction: column;
+      .quarterbie {
+        flex: 3;
+        position: relative;
+      }
+      .quarterbox {
+        flex: 3;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.0521rem;
+        .boxetser {
+          display: flex;
+          flex-direction: column;
+          line-height: 0.1927rem;
+          .boxserter {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+      .potingauge {
+        font-size: 0.1042rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 
   .top {
     height: 1.4583rem;
+    padding: 0.1042rem 0.1042rem;
+    display: flex;
+    justify-content: space-between;
+    .lefttop {
+      flex: 4;
+      display: flex;
+      flex-direction: column;
+      .lefttopul {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        li {
+          display: flex;
+          align-items: center;
+        }
+        .headimg {
+          width: 0.2083rem;
+          height: 0.2083rem;
+          margin-right: 0.1042rem;
+        }
+      }
+    }
+    .righttop {
+      flex: 6;
+      .righttopul {
+        margin-top: .1042rem;
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        .sup:nth-child(2) {
+          margin-left: 0.0521rem;
+          color: #68d8fe;
+          // padding: 0 .0521rem;
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+        ul:nth-child(1)> li:hover {
+          color: white;
+          background-color: rgba(255, 255, 255, 0.5);
+        }
+        .sup {
+          flex: 1;
+          display: flex;
+          color: #4c9bfd;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        ul > li {
+          display: flex;
+          font-size: 0.0677rem;
+
+          line-height: 0.1927rem;
+          justify-content: space-between;
+          position: relative;
+          .sopspan {
+            position: absolute;
+
+            width: 0.0521rem;
+            height: 0.0521rem;
+            color: red;
+          }
+        }
+      }
+    }
   }
 }
