@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
+    "echarts": "^5.5.1",
     "normalize.css": "^8.0.1",
     "pinia": "^2.1.7",
     "postcss-pxtorem": "^6.1.0",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue3-seamless-scroll": "^2.0.1"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",

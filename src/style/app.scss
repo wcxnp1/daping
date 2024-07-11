@@ -16,9 +16,295 @@
       background-color: blue;
       border-radius: 0.2083rem;
     }
-    .overviewname{
-         font-size: .0833rem;
-         color: #4c9bfd;
+    .overviewname {
+      font-size: 0.0833rem;
+      color: #4c9bfd;
     }
+  }
+}
+
+.column {
+  flex: 3;
+
+  .overview {
+    height: 0.5729rem;
+  }
+
+  .penster {
+    border-image: url('@/assets/images/border.png');
+    border-image-width: 0.2604rem 0.3385rem 0.125rem 0.6979rem;
+    border-image-slice: 56 44 39 140;
+    position: relative;
+    //  padding: .1042rem .1042rem;
+    margin-bottom: 0.1042rem;
+  }
+  .panel {
+    border-image: url('@/assets/images/border.png');
+    border-image-width: 0.2604rem 0.3385rem 0.125rem 0.6979rem;
+    border-image-slice: 56 44 39 140;
+    position: relative;
+    padding: 0.1042rem 0.1042rem;
+    margin-bottom: 0.1042rem;
+    .chart {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.21rem;
+      .pie {
+        flex: 8;
+        height: 1.25rem;
+      }
+      .data {
+        flex: 2;
+        background: url('@/assets/images/rect.png') no-repeat top left / cover;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.0521rem 0.1563rem;
+        .datatitlte {
+          margin: 0.0365rem 0;
+          .h3set {
+            font-size: 0.1146rem;
+            font-weight: 0;
+          }
+        }
+        .dataspan {
+          margin-top: 0.0781rem;
+          display: flex;
+          align-items: center;
+          .datastitlerer {
+            display: block;
+            width: 0.0521rem;
+            height: 0.0521rem;
+            background-color: #68d8fe;
+            border-radius: 100%;
+            margin-right: 0.0365rem;
+          }
+          .datatitle {
+            color: #61a8ff;
+            font-size: 0.0729rem;
+          }
+        }
+      }
+    }
+  }
+
+  .inner {
+    padding: 5px 5px;
+    box-sizing: border-box;
+  }
+
+  .monitor {
+    height: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0.1042rem 0;
+    overflow: hidden;
+    .monitorbox {
+      flex: 1;
+    }
+    .tabs {
+      text-align: left;
+      display: flex;
+      // align-items: center;
+      // margin-bottom: 0.0938rem;
+      padding: 0.1042rem 0.1042rem;
+      span:last-child {
+        // color: #fff;
+        margin-left: 0.1042rem;
+        padding: 0 0.1146rem;
+        border-left: 0.0104rem solid #68d8fe;
+      }
+
+      .tabsactive {
+        color: blue;
+      }
+
+      span {
+        display: inline-block;
+        padding: 0;
+        color: white;
+        padding: 0 0.0521rem;
+        text-align: left;
+      }
+    }
+    .content {
+      display: flex;
+      flex: 1;
+
+      //  background-color: red;
+      .head {
+        padding: 0 0.16rem;
+        box-sizing: content-box;
+        display: flex;
+        line-height: 0.1806rem;
+        justify-content: space-between;
+        //  background: rgba(130, 133, 132, 0);
+        // background: rgba(255,1255,0,0.5);
+        background-color: rgba(255, 255, 255, 0.3);
+
+        .col {
+          font-size: 0.0677rem;
+          color: #68d8fe;
+        }
+        .col:nth-child(2) {
+          width: 0.5729rem;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+      .marquee-view {
+        width: 100%;
+        flex: 1;
+        overflow: hidden;
+        margin-bottom: 20px;
+        .row {
+          position: relative;
+          display: flex;
+          flex: 1;
+          padding: 0 0.16rem;
+          justify-content: space-between;
+          font-size: 0.0677rem;
+          line-height: 0.2rem;
+          color: #61a8ff;
+          span:nth-child(3) {
+            width: 0.2188rem;
+          }
+        }
+        .row:hover {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+        .row:hover .rowset {
+          opacity: 1;
+        }
+        .rowset {
+          position: absolute;
+          left: 8px;
+          top: 11px;
+          opacity: 0;
+          width: 0.0521rem;
+          height: 0.0521rem;
+          background: rgb(0, 26, 255);
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+
+  .point {
+    height: 1.7708rem;
+    .chart {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.0521rem;
+      .pie {
+        flex: 7;
+        height: 1.25rem;
+      }
+      .data {
+        flex: 3;
+        background: url('@/assets/images/rect.png') no-repeat;
+        background-size: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.0521rem 0.1563rem;
+        .datatitlte {
+          margin: 0.0365rem 0;
+          .h3set {
+            font-size: 0.1146rem;
+            font-weight: 0;
+          }
+        }
+        .dataspan {
+          margin-top: 0.0781rem;
+          display: flex;
+          align-items: center;
+          .datastitlerer {
+            display: block;
+            width: 0.0521rem;
+            height: 0.0521rem;
+            background-color: #68d8fe;
+            border-radius: 100%;
+            margin-right: 0.0365rem;
+          }
+          .datatitle {
+            color: #61a8ff;
+            font-size: 0.0729rem;
+          }
+        }
+      }
+    }
+  }
+
+  .order {
+    height: 0.7813rem;
+    .filter {
+      display: flex;
+
+      .filtertitle {
+        color: #4c9bfd;
+        font-size: 14px;
+        padding: 0px 13px;
+        border-right: 2px solid #68d8fe;
+      }
+      .setactive {
+        color: white;
+        font-size: 0.1042rem;
+      }
+      .filtertitle:last-child {
+        border-right: none;
+      }
+    }
+    .orderdata {
+      margin-top: 0.1042rem;
+      display: flex;
+      // flex-direction: column;
+      justify-content: space-between;
+      padding: 0 10px;
+      .orderdatabox{
+         width: 50%;
+      }
+      .ordertitle{
+        margin-top: .026rem;
+          display: flex;
+          align-items: center;
+          .tittt{
+               width: .0521rem;
+               height: .0521rem;
+               border-radius: 100%;
+               background-color: #68d8fe;
+               margin-right: .0365rem;
+          }
+          .routername{
+             font-size: .0833rem;
+             color: #61a8ff;
+          }
+      }
+    }
+  }
+
+  .sales {
+    height: 1.2917rem;
+  }
+
+  .wrap {
+    display: flex;
+
+    .channel {
+      flex: 1;
+      height: 1.2083rem;
+      margin-right: 0.1042rem;
+    }
+
+    .quarter {
+      flex: 1;
+      height: 1.2083rem;
+    }
+  }
+
+  .top {
+    height: 1.4583rem;
   }
 }
